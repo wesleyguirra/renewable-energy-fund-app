@@ -11,18 +11,23 @@ import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import store from './store/store'
-
+import Login from './screens/Login'
+import { SafeAreaView } from 'react-native'
+import { ThemeProvider } from '@emotion/react'
+import theme from './theme'
 
 function App(): JSX.Element {
   const Stack = createNativeStackNavigator()
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Login" component={() => null}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ header: () => <SafeAreaView></SafeAreaView> }}>
+            <Stack.Screen name="Login" component={Login}/>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </Provider>
   )
 }
