@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import styled from '@emotion/native';
-import {useTheme} from '@emotion/react';
 import {space, color, flexbox, typography, border} from 'styled-system';
 import {useDispatch} from 'react-redux';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import UserIcon from '../icons/user.svg';
 import NotificationIcon from '../icons/notification.svg';
 import ArrowUpRightIcon from '../icons/arrow-up-right.svg';
+import ChevronDownIcon from '../icons/chevron-down.svg';
 import CoinIcon from '../icons/coin.svg';
 import funds from '../mockData.json';
 import Button from '../components/Button';
@@ -14,7 +14,9 @@ import FundItem from '../components/FundItem';
 import {FundData} from '../types';
 import BusinessStatisticsIllustration from '../illustrations/business-statistics.svg';
 import {HomeStackParamList} from './Home';
+import { TouchableOpacity } from 'react-native';
 
+// @ts-ignore
 const fundList: FundData[] = funds;
 
 const SafeAreaView = styled.SafeAreaView`
@@ -48,10 +50,17 @@ const ArrowUpRight = styled(ArrowUpRightIcon)`
   ${color}
 `;
 
+const ChevronDown = styled(ChevronDownIcon)`
+  ${space}
+  ${color}
+`;
+
+
 interface AccountScreenProps
   extends NativeStackScreenProps<HomeStackParamList> {}
 
 const Account = ({navigation: navigationProp}: AccountScreenProps) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     navigationProp.setOptions({
       header: () => {
@@ -75,10 +84,11 @@ const Account = ({navigation: navigationProp}: AccountScreenProps) => {
                 alignItems="center">
                 <UserIcon />
               </View>
-              <View>
+              <View flexDirection="row" alignItems="center">
                 <Text fontWeight={700} fontSize={14}>
                   Account: $1,457.23
                 </Text>
+                <ChevronDown color="black" marginLeft={1} />
               </View>
               <NotificationIcon />
             </SafeAreaView>
@@ -130,14 +140,18 @@ const Account = ({navigation: navigationProp}: AccountScreenProps) => {
         horizontal
         paddingHorizontal={20}
         showsHorizontalScrollIndicator={false}>
-        {fundList.map(fund => (
-          <FundItem
-            name={fund.name}
-            price={fund.price}
-            variation={fund.variation}
-            data={fund.data}
-            logo={fund.logo}
-          />
+        {fundList.map((fund) => (
+          <TouchableOpacity
+            key={fund.name}
+            onPress={() => dispatch({type: 'navigation/navigate', payload: {screen: 'FundDetails', params: fund}})}>
+            <FundItem
+              name={fund.name}
+              price={fund.price}
+              variation={fund.variation}
+              data={fund.data}
+              logo={fund.logo}
+            />
+          </TouchableOpacity>
         ))}
       </ScrollView>
 
@@ -162,6 +176,50 @@ const Account = ({navigation: navigationProp}: AccountScreenProps) => {
           <BusinessStatisticsIllustration height={80} />
         </View>
       </View>
+
+      <ScrollView
+        horizontal
+        paddingHorizontal={20}
+        marginVertical={20}
+        showsHorizontalScrollIndicator={false}
+      >
+        <View
+          width={130}
+          backgroundColor="gray.400"
+          padding={20}
+          marginRight={20}
+          borderRadius={8}
+          justifyContent="flex-start"
+        >
+          <Text fontWeight={600} paddingVertical={20} color="black">
+            Why you should invest here?
+          </Text>
+        </View>
+        <View
+          width={130}
+          backgroundColor="gray.400"
+          padding={20}
+          marginRight={20}
+          borderRadius={8}
+          justifyContent="flex-start"
+        >
+          <Text fontWeight={600} paddingVertical={20} color="black">
+            How long does it take to get my money?
+          </Text>
+        </View>
+        <View
+          width={130}
+          backgroundColor="gray.400"
+          padding={20}
+          marginRight={20}
+          borderRadius={8}
+          justifyContent="flex-start"
+        >
+          <Text fontWeight={600} paddingVertical={20} color="black">
+            How to invest in carbon credits?
+          </Text>
+        </View>
+      </ScrollView>
     </ScrollView>
   );
 };

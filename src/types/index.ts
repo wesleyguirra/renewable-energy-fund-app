@@ -2,11 +2,13 @@ export interface FundData {
   name: string;
   logo: string;
   code: string;
-  data: {value: number}[];
+  data: {value: number, label: string, labelComponent: any}[];
   price: number;
   variation: number;
-}
-
-export interface FundChartData extends FundData {
-  data: {value: number; date: string}[];
+  fundAssets: {
+    name: string;
+    about: string;
+    featureImage: string;
+    logo: string;
+  }[];
 }

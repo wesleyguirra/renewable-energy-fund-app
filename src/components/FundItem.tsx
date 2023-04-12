@@ -1,9 +1,10 @@
 import React from 'react';
 import {LineChart} from 'react-native-gifted-charts';
-import ArrowUpRightIcon from '../icons/arrow-up-right.svg';
 import styled from '@emotion/native';
 import {border, color, flexbox, space, typography} from 'styled-system';
 import {useTheme} from '@emotion/react';
+import ArrowUpRightIcon from '../icons/arrow-up-right.svg';
+import ArrowDownRightIcon from '../icons/arrow-down-right.svg'
 
 declare module '@emotion/react' {
   export interface Theme {
@@ -33,6 +34,11 @@ const Image = styled.Image`
 `;
 
 const ArrowUpRight = styled(ArrowUpRightIcon)`
+  ${space}
+  ${color}
+`;
+
+const ArrowDownRight = styled(ArrowDownRightIcon)`
   ${space}
   ${color}
 `;
@@ -81,10 +87,18 @@ const FundItem = ({name, data, price, logo, variation}: FundItemProps) => {
       <View flexDirection="row" justifyContent="space-between">
         <Text fontSize={16} fontWeight={400}>{`$${price}`}</Text>
         <View flexDirection="row" alignItems="center">
-          <ArrowUpRight
-            marginHorizontal={3}
-            color={variation > 0 ? 'success' : 'error'}
-          />
+          {variation > 0 ? (
+            <ArrowUpRight
+              marginHorizontal={3}
+              color="success"
+            />
+          ) : (
+            <ArrowDownRight
+              marginHorizontal={3}
+              color="error"
+            />
+          )}
+
           <Text fontSize={16} color={variation > 0 ? 'success' : 'error'}>
             {variation}%
           </Text>

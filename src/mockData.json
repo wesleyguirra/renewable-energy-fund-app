@@ -3,19 +3,33 @@
     "name": "Wind Fund",
     "code": "WFND",
     "logo": "https://i.postimg.cc/NMLd8Knq/wind-logo.png",
+    "fundAssets": [
+      {
+        "name": "AspiraDAC",
+        "logo": "https://i.postimg.cc/L5wV2R2c/logo-aspiradac.png",
+        "featureImage": "https://i.postimg.cc/1t4RwZ17/aspiradac.png",
+        "about": "Aspira is building a modular, direct air capture system with the energy supply integrated into the modules."
+      },
+      {
+        "name": "Climeworks",
+        "logo": "https://i.postimg.cc/QCHq2VGg/logo-climeworks.png",
+        "featureImage": "https://i.postimg.cc/ZqwKW52y/climeworks.png",
+        "about": "uses renewable geothermal energy and waste heat to capture CO₂ directly from \u2028the air."
+      }
+    ],
     "data": [
-      { "value": 100 },
-      { "value": 120 },
-      { "value": 150 },
-      { "value": 130 },
-      { "value": 170 },
-      { "value": 190 },
-      { "value": 210 },
-      { "value": 230 },
-      { "value": 200 },
-      { "value": 180 },
-      { "value": 210 },
-      { "value": 240 }
+      { "value": 100, "label": null, "labelComponent":null },
+      { "value": 120, "label": null, "labelComponent": null },
+      { "value": 150, "label": null, "labelComponent": null },
+      { "value": 130, "label": null, "labelComponent": null },
+      { "value": 170, "label": null, "labelComponent": null },
+      { "value": 190, "label": null, "labelComponent": null },
+      { "value": 210, "label": null, "labelComponent": null },
+      { "value": 230, "label": null, "labelComponent": null },
+      { "value": 200, "label": null, "labelComponent": null },
+      { "value": 180, "label": null, "labelComponent": null },
+      { "value": 210, "label": null, "labelComponent": null },
+      { "value": 240, "label": null, "labelComponent": null }
     ],
     "price": 240.50,
     "variation": 0.5
@@ -24,19 +38,33 @@
     "name": "Solar Fund",
     "code": "SFND",
     "logo": "https://i.postimg.cc/7LKBT3mn/solar-logo.png",
+    "fundAssets": [
+      {
+        "name": "AspiraDAC",
+        "logo": "https://i.postimg.cc/L5wV2R2c/logo-aspiradac.png",
+        "featureImage": "https://i.postimg.cc/1t4RwZ17/aspiradac.png",
+        "about": "Aspira is building a modular, direct air capture system with the energy supply integrated into the modules."
+      },
+      {
+        "name": "Climeworks",
+        "logo": "https://i.postimg.cc/QCHq2VGg/logo-climeworks.png",
+        "featureImage": "https://i.postimg.cc/ZqwKW52y/climeworks.png",
+        "about": "uses renewable geothermal energy and waste heat to capture CO₂ directly from \u2028the air."
+      }
+    ],
     "data": [
-      { "value": 500 },
-      { "value": 550 },
-      { "value": 700 },
-      { "value": 650 },
-      { "value": 800 },
-      { "value": 900 },
-      { "value": 950 },
-      { "value": 1100 },
-      { "value": 1050 },
-      { "value": 900 },
-      { "value": 950 },
-      { "value": 1200 }
+      { "value": 500, "label": null, "labelComponent": null },
+      { "value": 550, "label": null, "labelComponent": null },
+      { "value": 700, "label": null, "labelComponent": null },
+      { "value": 650, "label": null, "labelComponent": null },
+      { "value": 800, "label": null, "labelComponent": null },
+      { "value": 900, "label": null, "labelComponent": null },
+      { "value": 950, "label": null, "labelComponent": null },
+      { "value": 1100, "label": null, "labelComponent": null },
+      { "value": 1050, "label": null, "labelComponent": null },
+      { "value": 900, "label": null, "labelComponent": null },
+      { "value": 950, "label": null, "labelComponent": null },
+      { "value": 1200, "label": null, "labelComponent": null }
     ],
     "price": 95.25,
     "variation": -1.2
@@ -45,19 +73,33 @@
     "name": "Nature Fund",
     "code": "NFND",
     "logo": "https://i.postimg.cc/HLYZxZ4L/nature-logo.png",
+    "fundAssets": [
+      {
+        "name": "AspiraDAC",
+        "logo": "https://i.postimg.cc/L5wV2R2c/logo-aspiradac.png",
+        "featureImage": "https://i.postimg.cc/1t4RwZ17/aspiradac.png",
+        "about": "Aspira is building a modular, direct air capture system with the energy supply integrated into the modules."
+      },
+      {
+        "name": "Climeworks",
+        "logo": "https://i.postimg.cc/QCHq2VGg/logo-climeworks.png",
+        "featureImage": "https://i.postimg.cc/ZqwKW52y/climeworks.png",
+        "about": "uses renewable geothermal energy and waste heat to capture CO₂ directly from \u2028the air."
+      }
+    ],
     "data": [
-      { "value": 4000 },
-      { "value": 4500 },
-      { "value": 5500 },
-      { "value": 5000 },
-      { "value": 6000 },
-      { "value": 7000 },
-      { "value": 7500 },
-      { "value": 9000 },
-      { "value": 8500 },
-      { "value": 7000 },
-      { "value": 7500 },
-      { "value": 10000 }
+      { "value": 4000, "label": null, "labelComponent": null },
+      { "value": 4500, "label": null, "labelComponent": null },
+      { "value": 5500, "label": null, "labelComponent": null },
+      { "value": 5000, "label": null, "labelComponent": null },
+      { "value": 6000, "label": null, "labelComponent": null },
+      { "value": 7000, "label": null, "labelComponent": null },
+      { "value": 7500, "label": null, "labelComponent": null },
+      { "value": 9000, "label": null, "labelComponent": null },
+      { "value": 8500, "label": null, "labelComponent": null },
+      { "value": 7000, "label": null, "labelComponent": null },
+      { "value": 7500, "label": null, "labelComponent": null },
+      { "value": 10000, "label": null, "labelComponent": null }
     ],
     "price": 27.10,
     "variation": 2.5

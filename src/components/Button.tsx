@@ -18,18 +18,22 @@ const variants = {
   primary: {
     backgroundColor: 'primary.500',
     color: 'white',
+    borderColor: 'primary.500'
   },
   secondary: {
     backgroundColor: 'white',
-    color: 'primary',
+    color: 'primary.500',
+    borderColor: 'gray.400'
   },
   success: {
     backgroundColor: 'success',
     color: 'white',
+    borderColor: 'success'
   },
   ghost: {
     backgroundColor: 'primary.100',
     color: 'primary.500',
+    borderColor: 'primary.100'
   },
 };
 
@@ -93,7 +97,9 @@ const Button = ({
           paddingVertical={sizes[size!].paddingVertical}
           paddingHorizontal={sizes[size!].paddingHorizontal}
           variant={variant}
+          borderWidth={1}
           flexDirection="row"
+          justifyContent="center"
           alignItems="center">
           {leftAccessory && leftAccessory()}
           <Text

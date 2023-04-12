@@ -8,6 +8,8 @@ import {
 import {CommonActions} from '@react-navigation/native';
 import Account from './Account';
 import ArrowLeftIcon from '../icons/left-arrow.svg';
+import FundDetails from './FundDetails';
+import { FundData } from "../types";
 
 const View = styled.View`
   ${color}
@@ -24,7 +26,7 @@ const SafeAreaView = styled.SafeAreaView`
 
 export type HomeStackParamList = {
   Account: undefined;
-  FundDetails: undefined;
+  FundDetails: FundData;
 };
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -84,6 +86,7 @@ const Home = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Account" component={Account} />
+      <HomeStack.Screen name="FundDetails" component={FundDetails} />
     </HomeStack.Navigator>
   );
 };
