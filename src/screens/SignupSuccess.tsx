@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styled from '@emotion/native';
 import {space, color, flexbox, typography, border} from 'styled-system';
 import {useDispatch} from 'react-redux';
@@ -29,9 +29,15 @@ const StyledRevenueIllustration = styled(RevenueIllustration)`
 interface LoginScreenProps
   extends NativeStackScreenProps<RootStackParamList, 'SignupSuccess'> {}
 
-const SignupSuccess = ({route}: LoginScreenProps) => {
+const SignupSuccess = ({navigation, route}: LoginScreenProps) => {
   const dispatch = useDispatch();
   const {firstName} = route.params?.user || {};
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => null,
+    })
+  }, [navigation])
 
   const goBackToLogin = () => {
     dispatch({
