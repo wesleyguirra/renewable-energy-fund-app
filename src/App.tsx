@@ -35,7 +35,7 @@ function Navigator(): JSX.Element {
 
   return (
     <RootStack.Navigator>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <>
           <RootStack.Screen name="Login" component={Login} />
           <RootStack.Screen name="Signup" component={Signup} />
