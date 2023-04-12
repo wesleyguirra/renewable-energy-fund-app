@@ -1,10 +1,17 @@
-import React from 'react'
-import Input from "../components/Input";
-import styled from "@emotion/native";
-import { space, color, flexbox, typography } from "styled-system";
-import Button from "../components/Button";
+import React from "react";
+import styled from '@emotion/native'
+import { space, color, flexbox, typography, border } from 'styled-system'
+import { useForm, Controller } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useDispatch } from 'react-redux'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import Button from '../components/Button'
+import Input from '../components/Input'
+import { RootStackParamList } from '../navigation'
 
-const LoginContainer = styled.View`
+
+const View = styled.View`
   ${color}
   ${space}
   ${flexbox}
@@ -14,13 +21,43 @@ const Text = styled.Text`
   ${space}
   ${color}
   ${typography}
+  ${border}
 `
 
-interface LoginScreenProps {}
+const TouchableOpacity = styled.TouchableOpacity`
+  ${space}
+  ${border}
+`
 
-const LoginScreen = (props: LoginScreenProps) => {
+interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList> {}
+
+const schema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+}).required();
+type FormData = yup.InferType<typeof schema>
+
+const LoginScreen = ({ navigation }: LoginScreenProps) => {
+  const dispatch = useDispatch()
+  const {control, handleSubmit, formState: { errors }} = useForm<FormData>({
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    resolver: yupResolver(schema)
+  })
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+  }
+
+  const onSignupPress = () => {
+    // dispatch({type: 'navigation/goBack', payload: {screen: 'Signup'}})
+    navigation.push('Signup')
+  }
+
   return (
-    <LoginContainer flexGrow backgroundColor="white" paddingHorizontal={20}>
+    <View flexGrow backgroundColor="white" paddingHorizontal={20}>
       <Text
         fontSize={18}
         fontWeight={600}
@@ -30,24 +67,52 @@ const LoginScreen = (props: LoginScreenProps) => {
       >
         Login
       </Text>
-      <Input
-        label="E-mail"
-        placeholder="Your e-mail"
-        autoCorrect={false}
-        autoCapitalize="none"
-        autoComplete="email"
+      <Controller
+        name="email"
+        control={control}
+        render={({field: {onChange, onBlur, value}}) => (
+          <Input
+            label="E-mail"
+            placeholder="Your e-mail"
+            autoCorrect={false}
+            autoCapitalize="none"
+            autoComplete="email"
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
+            error={errors.email?.message}
+          />
+        )}
       />
-      <Input
-        label="Password"
-        placeholder="Minimum 8 characters"
-        textContentType="password"
-        secureTextEntry
+      <Controller
+        name="password"
+        control={control}
+        render={({field: {onChange, onBlur, value}}) => (
+          <Input
+            label="Password"
+            placeholder="Minimum 8 characters"
+            textContentType="password"
+            secureTextEntry
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
+            error={errors.password?.message}
+          />
+        )}
       />
-      <Button marginTop={25} marginBottom={3} variant="primary" onPress={() => {}}>
+      <Button marginTop={25} marginBottom={3} variant="primary" onPress={handleSubmit(onSubmit)}>
         Login
       </Button>
-      <Text textAlign="center" fontSize={12} color="gray.600">Don't have an account? Sign up here</Text>
-    </LoginContainer>
+      <Text flex textAlign="center" fontSize={12} color="gray.600">
+        <Text>Don't have an account? </Text>
+        <TouchableOpacity borderBottomWidth={1} borderBottomColor="gray.600" marginBottom={-2.3} onPress={onSignupPress}>
+          <Text fontSize={12} color="gray.600">Sign up</Text>
+        </TouchableOpacity>
+        <Text> here</Text>
+      </Text>
+    </View>
   )
 }
 

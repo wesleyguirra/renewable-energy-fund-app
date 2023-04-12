@@ -11,6 +11,7 @@ const navigationSlice = createSlice({
       state.currentRoute = action.payload
     },
     goBack: (state) => {
+      console.log('goBack')
       state.currentRoute = null
     }
   }
