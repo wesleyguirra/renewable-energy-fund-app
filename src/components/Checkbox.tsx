@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from '@emotion/native'
-import { border, color, flexbox, layout, space } from 'styled-system'
-import CheckIcon from '../icons/check.svg'
-import { TouchableWithoutFeedback } from 'react-native'
+import React from 'react';
+import styled from '@emotion/native';
+import {border, color, flexbox, layout, space} from 'styled-system';
+import CheckIcon from '../icons/check.svg';
+import {TouchableWithoutFeedback} from 'react-native';
 
 const View = styled.View`
   ${space}
@@ -10,7 +10,7 @@ const View = styled.View`
   ${border}
   ${flexbox}
   ${layout}
-`
+`;
 
 interface CheckboxProps {
   value?: boolean;
@@ -18,7 +18,7 @@ interface CheckboxProps {
   error?: string;
 }
 
-const Checkbox = ({ value, onChange, error, ...props }: CheckboxProps) => {
+const Checkbox = ({value, onChange, error, ...props}: CheckboxProps) => {
   return (
     <TouchableWithoutFeedback onPress={() => onChange(!value)}>
       <View
@@ -30,8 +30,7 @@ const Checkbox = ({ value, onChange, error, ...props }: CheckboxProps) => {
         backgroundColor={value ? 'gray.600' : 'white'}
         justifyContent="center"
         alignItems="center"
-        {...props}
-      >
+        {...props}>
         {value ? <CheckIcon width={14} height={14} color="white" /> : null}
       </View>
     </TouchableWithoutFeedback>

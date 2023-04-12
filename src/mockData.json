@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Wind Fund",
+    "code": "WFND",
+    "logo": "https://i.postimg.cc/NMLd8Knq/wind-logo.png",
+    "data": [
+      { "value": 100 },
+      { "value": 120 },
+      { "value": 150 },
+      { "value": 130 },
+      { "value": 170 },
+      { "value": 190 },
+      { "value": 210 },
+      { "value": 230 },
+      { "value": 200 },
+      { "value": 180 },
+      { "value": 210 },
+      { "value": 240 }
+    ],
+    "price": 240.50,
+    "variation": 0.5
+  },
+  {
+    "name": "Solar Fund",
+    "code": "SFND",
+    "logo": "https://i.postimg.cc/7LKBT3mn/solar-logo.png",
+    "data": [
+      { "value": 500 },
+      { "value": 550 },
+      { "value": 700 },
+      { "value": 650 },
+      { "value": 800 },
+      { "value": 900 },
+      { "value": 950 },
+      { "value": 1100 },
+      { "value": 1050 },
+      { "value": 900 },
+      { "value": 950 },
+      { "value": 1200 }
+    ],
+    "price": 95.25,
+    "variation": -1.2
+  },
+  {
+    "name": "Nature Fund",
+    "code": "NFND",
+    "logo": "https://i.postimg.cc/HLYZxZ4L/nature-logo.png",
+    "data": [
+      { "value": 4000 },
+      { "value": 4500 },
+      { "value": 5500 },
+      { "value": 5000 },
+      { "value": 6000 },
+      { "value": 7000 },
+      { "value": 7500 },
+      { "value": 9000 },
+      { "value": 8500 },
+      { "value": 7000 },
+      { "value": 7500 },
+      { "value": 10000 }
+    ],
+    "price": 27.10,
+    "variation": 2.5
+  }
+]

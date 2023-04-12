@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
-import { navigationRef } from "../navigation";
+import {createSlice} from '@reduxjs/toolkit';
+import {navigationRef} from '../navigation';
 
 const navigationSlice = createSlice({
   name: 'navigation',
@@ -8,27 +8,27 @@ const navigationSlice = createSlice({
   },
   reducers: {
     navigate: (state, action) => {
-      console.log(action)
+      console.log(action);
       if (navigationRef.isReady()) {
         // @ts-ignore
-        navigationRef.navigate(action.payload.screen, action.payload.params)
+        navigationRef.navigate(action.payload.screen, action.payload.params);
       }
-      state.currentRoute = action.payload
+      state.currentRoute = action.payload;
     },
-    goBack: (state) => {
-      navigationRef.goBack()
-      state.currentRoute = null
+    goBack: state => {
+      navigationRef.goBack();
+      state.currentRoute = null;
     },
     replace: (state, action) => {
-      console.log(navigationRef)
+      console.log(navigationRef);
       if (navigationRef.isReady()) {
         // @ts-ignore
-        navigationRef.navigate(action.payload.screen, action.payload.params)
+        navigationRef.navigate(action.payload.screen, action.payload.params);
       }
-      state.currentRoute = action.payload
-    }
-  }
-})
+      state.currentRoute = action.payload;
+    },
+  },
+});
 
-export const {navigate, goBack} = navigationSlice.actions
-export default navigationSlice.reducer
+export const {navigate, goBack} = navigationSlice.actions;
+export default navigationSlice.reducer;

@@ -1,39 +1,32 @@
-import React, { useEffect } from "react";
-import styled from '@emotion/native'
-import { space, color, flexbox, typography, border } from 'styled-system'
-import { useDispatch } from 'react-redux'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../navigation'
-
+import React, {useEffect} from 'react';
+import styled from '@emotion/native';
+import {space, color, flexbox, typography, border} from 'styled-system';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {HomeStackParamList} from './Home';
 
 const View = styled.View`
   ${color}
   ${space}
   ${flexbox}
-`
+`;
 
 const Text = styled.Text`
   ${space}
   ${color}
   ${typography}
   ${border}
-`
+`;
 
-interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList> {}
+interface PortfolioScreenProps
+  extends NativeStackScreenProps<HomeStackParamList> {}
 
-const Portfolio = ({ navigation }: LoginScreenProps) => {
-  const dispatch = useDispatch()
-
+const Portfolio = ({navigation}: PortfolioScreenProps) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
-      headerTitle: () => null
-    })
-  }, [])
-
-  const onSignupPress = () => {
-    navigation.push('Signup')
-  }
+      headerTitle: () => null,
+    });
+  }, [navigation]);
 
   return (
     <View flexGrow backgroundColor="white" paddingHorizontal={20}>
@@ -42,12 +35,11 @@ const Portfolio = ({ navigation }: LoginScreenProps) => {
         fontWeight={600}
         textAlign="center"
         paddingVertical={20}
-        color="black"
-      >
+        color="black">
         Portfolio
       </Text>
     </View>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;

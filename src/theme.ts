@@ -2,7 +2,7 @@ export default {
   colors: {
     primary: {
       100: '#f2f2ff',
-      500: '#770fdf'
+      500: '#770fdf',
     },
     gray: {
       200: '#f4f4f4',
@@ -16,8 +16,9 @@ export default {
     },
     white: '#ffffff',
     black: '#000000',
-    success: '#4cdf8f'
+    success: '#4cdf8f',
+    error: '#ee8688',
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72]
-}
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+};

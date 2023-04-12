@@ -1,66 +1,72 @@
-import React, { useEffect } from "react";
-import styled from '@emotion/native'
-import { space, color, flexbox, typography, border } from 'styled-system'
-import { useForm, Controller } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useDispatch } from 'react-redux'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import Button from '../components/Button'
-import Input from '../components/Input'
-import { RootStackParamList } from '../navigation'
-
+import React, {useEffect} from 'react';
+import styled from '@emotion/native';
+import {space, color, flexbox, typography, border} from 'styled-system';
+import {useForm, Controller} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {useDispatch} from 'react-redux';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import Button from '../components/Button';
+import Input from '../components/Input';
+import {RootStackParamList} from '../navigation';
 
 const View = styled.View`
   ${color}
   ${space}
   ${flexbox}
-`
+`;
 
 const Text = styled.Text`
   ${space}
   ${color}
   ${typography}
   ${border}
-`
+`;
 
 const TouchableOpacity = styled.TouchableOpacity`
   ${space}
   ${border}
-`
+`;
 
-interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
+interface LoginScreenProps
+  extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
 
-const schema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
-}).required();
-type FormData = yup.InferType<typeof schema>
+const schema = yup
+  .object({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+  })
+  .required();
+type FormData = yup.InferType<typeof schema>;
 
-const LoginScreen = ({ navigation }: LoginScreenProps) => {
-  const dispatch = useDispatch()
-  const {control, handleSubmit, formState: { errors }} = useForm<FormData>({
+const LoginScreen = ({navigation}: LoginScreenProps) => {
+  const dispatch = useDispatch();
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<FormData>({
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
     },
-    resolver: yupResolver(schema)
-  })
+    resolver: yupResolver(schema),
+  });
 
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
-      headerTitle: () => null
-    })
-  }, [])
+      headerTitle: () => null,
+    });
+  }, [navigation]);
 
   const onSubmit = (data: any) => {
-    dispatch({type: 'auth/setUser', payload: data})
-  }
+    dispatch({type: 'auth/setUser', payload: data});
+  };
 
   const onSignupPress = () => {
-    dispatch({type: 'navigation/navigate', payload: {screen: 'Signup'}})
-  }
+    dispatch({type: 'navigation/navigate', payload: {screen: 'Signup'}});
+  };
 
   return (
     <View flexGrow backgroundColor="white" paddingHorizontal={20}>
@@ -69,8 +75,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
         fontWeight={600}
         textAlign="center"
         paddingVertical={20}
-        color="black"
-      >
+        color="black">
         Login
       </Text>
       <Controller
@@ -108,18 +113,28 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
           />
         )}
       />
-      <Button marginTop={25} marginBottom={3} variant="primary" onPress={handleSubmit(onSubmit)}>
+      <Button
+        marginTop={25}
+        marginBottom={3}
+        variant="primary"
+        onPress={handleSubmit(onSubmit)}>
         Login
       </Button>
       <Text flex textAlign="center" fontSize={12} color="gray.600">
         <Text>Don't have an account? </Text>
-        <TouchableOpacity borderBottomWidth={1} borderBottomColor="black" marginBottom={-2.9} onPress={onSignupPress}>
-          <Text fontSize={12} color="black">Sign up</Text>
+        <TouchableOpacity
+          borderBottomWidth={1}
+          borderBottomColor="black"
+          marginBottom={-2.9}
+          onPress={onSignupPress}>
+          <Text fontSize={12} color="black">
+            Sign up
+          </Text>
         </TouchableOpacity>
         <Text> here</Text>
       </Text>
     </View>
-  )
-}
+  );
+};
 
-export default LoginScreen
+export default LoginScreen;
