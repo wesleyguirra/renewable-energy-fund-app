@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 import styled from '@emotion/native'
-import { space, color, flexbox, typography, border, layout } from "styled-system";
+import { space, color, flexbox, typography, border, layout } from 'styled-system'
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Button from '../components/Button'
 import Input from '../components/Input'
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../navigation";
-import Checkbox from "../components/Checkbox";
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../navigation'
+import Checkbox from '../components/Checkbox'
+import { useDispatch } from 'react-redux'
 
 const SafeAreaView = styled.SafeAreaView`
   ${color}
@@ -47,6 +48,7 @@ const schema = yup.object({
 type FormData = yup.InferType<typeof schema>
 
 const SignupScreen = ({ navigation }: SignupScreenProps) => {
+  const dispatch = useDispatch()
   const {control, handleSubmit, formState: { errors }} = useForm<FormData>({
     defaultValues: {
       firstName: '',
@@ -59,7 +61,11 @@ const SignupScreen = ({ navigation }: SignupScreenProps) => {
   })
 
   const onSubmit = (data: any) => {
-    console.log(data)
+    dispatch({type: 'navigation/navigate', payload: {screen: 'SignupSuccess', params: {user: data}}})
+  }
+
+  const onClickSignup = () => {
+    dispatch({type: 'navigation/navigate', payload: {screen: 'Login'}})
   }
 
   useEffect(() => {
@@ -67,8 +73,8 @@ const SignupScreen = ({ navigation }: SignupScreenProps) => {
       headerTitle: () => (
         <View flexDirection="row" marginLeft="auto" marginRight="auto">
           {/* The different color here is just to demonstrate that we can dynamically show the step indicator */}
-          {[1,2,3].map((_, index) => (
-            <View marginHorizontal={5} width={40} height={5} backgroundColor={index === 0 ? 'gray.400' : 'gray.300'} borderRadius={3}/>
+          {[1,2,3].map((number, index) => (
+            <View key={number} marginHorizontal={5} width={40} height={5} backgroundColor={index === 0 ? 'gray.400' : 'gray.300'} borderRadius={3}/>
           ))}
         </View>
       )
@@ -181,11 +187,10 @@ const SignupScreen = ({ navigation }: SignupScreenProps) => {
         Create an account
       </Button>
       <Text flex textAlign="center" fontSize={12} color="gray.600">
-        <Text>Don't have an account? </Text>
-        <TouchableOpacity borderBottomWidth={1} borderBottomColor="gray.600" marginBottom={-2.3}>
-          <Text fontSize={12} color="gray.600">Sign up</Text>
+        <Text>Already have an account? </Text>
+        <TouchableOpacity borderBottomWidth={1} borderBottomColor="gray.600" marginBottom={-2.9} onPress={onClickSignup}>
+          <Text fontSize={12} color="black">Log in here</Text>
         </TouchableOpacity>
-        <Text> here</Text>
       </Text>
     </View>
   )

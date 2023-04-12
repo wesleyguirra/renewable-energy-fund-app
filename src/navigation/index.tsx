@@ -1,27 +1,55 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import ArrowLeftIcon from '../icons/left-arrow.svg'
-import { TouchableOpacity } from "react-native";
-import { CommonActions } from "@react-navigation/native";
+import { TouchableOpacity } from 'react-native'
+import { CommonActions } from '@react-navigation/native'
 import styled from "@emotion/native";
-import { border, color, flexbox, layout, space, typography } from "styled-system";
+import { border, color, flexbox, layout, space } from 'styled-system'
+import { createNavigationContainerRef } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import HomeIcon from '../icons/home.svg'
+import TradeIcon from '../icons/trade.svg'
+import PortfolioIcon from '../icons/portfolio.svg'
+import theme from '../theme'
+
+export const navigationRef = createNavigationContainerRef()
 
 export type RootStackParamList = {
   Login: undefined,
-  Signup: undefined
+  Signup: undefined,
+  SignupSuccess: { user: { firstName: string, email: string } },
+  Main: undefined
+}
+
+export type TabParamList = {
+  Home: undefined,
+  Trade: undefined,
+  Portfolio: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
+
+export const Tab = createBottomTabNavigator<TabParamList>()
+
+Tab.Navigator.defaultProps = {
+  screenOptions: ({ route }) => ({
+    tabBarActiveTintColor: theme.colors.primary[500],
+    tabBarInactiveTintColor: theme.colors.black,
+    tabBarIcon: ({ focused, color, size }) => {
+      const icons = {
+        Home: HomeIcon,
+        Trade: TradeIcon,
+        Portfolio: PortfolioIcon,
+      }
+      return React.createElement(icons[route.name], { width: 18, height: 18, fill: color })
+    },
+  }),
+}
 
 const View = styled.View`
   ${border}
   ${color}
   ${space}
-`
-
-const Text = styled.Text`
-  ${space}
-  ${typography}
 `
 
 const SafeAreaView = styled.SafeAreaView`

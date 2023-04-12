@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { CommonActions } from '@react-navigation/native'
+import { navigationRef } from "../navigation";
 
 const navigationSlice = createSlice({
   name: 'navigation',
@@ -8,11 +8,24 @@ const navigationSlice = createSlice({
   },
   reducers: {
     navigate: (state, action) => {
+      console.log(action)
+      if (navigationRef.isReady()) {
+        // @ts-ignore
+        navigationRef.navigate(action.payload.screen, action.payload.params)
+      }
       state.currentRoute = action.payload
     },
     goBack: (state) => {
-      console.log('goBack')
+      navigationRef.goBack()
       state.currentRoute = null
+    },
+    replace: (state, action) => {
+      console.log(navigationRef)
+      if (navigationRef.isReady()) {
+        // @ts-ignore
+        navigationRef.navigate(action.payload.screen, action.payload.params)
+      }
+      state.currentRoute = action.payload
     }
   }
 })

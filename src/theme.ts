@@ -1,6 +1,9 @@
 export default {
   colors: {
-    primary: '#770fdf',
+    primary: {
+      100: '#f2f2ff',
+      500: '#770fdf'
+    },
     gray: {
       200: '#f4f4f4',
       300: '#ebebeb',
@@ -12,6 +15,7 @@ export default {
       900: '#3d3d3d',
     },
     white: '#ffffff',
+    black: '#000000',
     success: '#4cdf8f'
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

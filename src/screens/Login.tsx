@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from '@emotion/native'
 import { space, color, flexbox, typography, border } from 'styled-system'
 import { useForm, Controller } from 'react-hook-form'
@@ -29,7 +29,7 @@ const TouchableOpacity = styled.TouchableOpacity`
   ${border}
 `
 
-interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList> {}
+interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -47,13 +47,19 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     resolver: yupResolver(schema)
   })
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => null,
+      headerTitle: () => null
+    })
+  }, [])
+
   const onSubmit = (data: any) => {
-    console.log(data)
+    dispatch({type: 'auth/setUser', payload: data})
   }
 
   const onSignupPress = () => {
-    // dispatch({type: 'navigation/goBack', payload: {screen: 'Signup'}})
-    navigation.push('Signup')
+    dispatch({type: 'navigation/navigate', payload: {screen: 'Signup'}})
   }
 
   return (
@@ -107,8 +113,8 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
       </Button>
       <Text flex textAlign="center" fontSize={12} color="gray.600">
         <Text>Don't have an account? </Text>
-        <TouchableOpacity borderBottomWidth={1} borderBottomColor="gray.600" marginBottom={-2.3} onPress={onSignupPress}>
-          <Text fontSize={12} color="gray.600">Sign up</Text>
+        <TouchableOpacity borderBottomWidth={1} borderBottomColor="black" marginBottom={-2.9} onPress={onSignupPress}>
+          <Text fontSize={12} color="black">Sign up</Text>
         </TouchableOpacity>
         <Text> here</Text>
       </Text>

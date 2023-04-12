@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/native'
 import { border, color, flexbox, layout, space } from 'styled-system'
 import CheckIcon from '../icons/check.svg'
-import { TouchableWithoutFeedback } from "react-native";
+import { TouchableWithoutFeedback } from 'react-native'
 
 const View = styled.View`
   ${space}

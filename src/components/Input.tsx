@@ -60,7 +60,7 @@ const Input = ({label, secureTextEntry, textContentType, ...props} : InputProps)
         <TextInput
           selectionColor="gray"
           fontSize={14}
-          secureTextEntry={isPassword}
+          secureTextEntry={isPassword && !isVisible}
           textContentType={textContentType}
           width="100%"
           {...props}
